@@ -1,0 +1,64 @@
+"use strict";
+jQuery(document).ready(function() {
+	var table = $('#kt_datatable1').DataTable({
+        aaSorting: [],
+        responsive: true,
+        "scrollX": true,
+        dom: `<'row'<'col-sm-6 text-left'f><'col-sm-6 text-right'B>>
+        <'row'<'col-sm-12'tr>>
+        <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+        language: {
+            "lengthMenu": "Displays _MENU_ data per page",
+            "zeroRecords": "No data available",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "Data not available",
+            "infoFiltered": "(Filtered from _MAX_ total data)"
+        },
+        columnDefs: [
+            { responsivePriority: 1, targets: 1 }
+        ],
+        buttons: [
+            'print',
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5',
+        ],
+        columnDefs: [
+            {
+                "orderable": false,
+                "searchable": false,
+                "targets": -1
+            }
+        ]
+    });
+    table.buttons().remove();
+
+    var table2 = $('#kt_datatable2').DataTable({
+        aaSorting: [],
+        "searching": false,
+        responsive: true,
+        "scrollX": true,
+        dom: `<'row'<'col-sm-6 text-left'f><'col-sm-6 text-right'B>>
+        <'row'<'col-sm-12'tr>>
+        <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+        language: {
+            "lengthMenu": "Displays _MENU_ data per page",
+            "zeroRecords": "No data available",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "Data not available",
+            "infoFiltered": "(Filtered from _MAX_ total data)"
+        },
+        columnDefs: [
+            { responsivePriority: 1, targets: 1 }
+        ],
+        columnDefs: [
+            {
+                "orderable": false,
+                "searchable": false,
+                "targets": -1
+            }
+        ]
+    });
+    table2.buttons().remove();
+});
