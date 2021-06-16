@@ -131,12 +131,12 @@ class AddController extends Controller
             ],400);
         }
 
-        $code = generate_code(session('company_code'),5,"MAEMP");
-        if ($code["status_code"] != "OK") {
-            return response()->json([
-                'message' => "Error on generating code, please try again"
-            ], 500);
-        }
+        // $code = generate_code(session('company_code'),5,"MAEMP");
+        // if ($code["status_code"] != "OK") {
+        //     return response()->json([
+        //         'message' => "Error on generating code, please try again"
+        //     ], 500);
+        // }
 
         $insert_data = [
             "MAEMP_CODE" => strtoupper($code["data"]),
@@ -145,10 +145,10 @@ class AddController extends Controller
             "MAEMP_MACOP_CODE" => $request->employee_phone_code,
             "MAEMP_PHONE_NUMBER" => $request->employee_phone,
             "MAEMP_EMAIL" => $request->employee_email,
-            "MAEMP_MCOMP_CODE" => session("company_code"),
-            "MAEMP_MCOMP_NAME" => session("company_name"),
-            "MAEMP_MBRAN_CODE" => session("brand_code"),
-            "MAEMP_MBRAN_NAME" => session("brand_name"),
+            "MAEMP_MCOMP_CODE" => "none",
+            "MAEMP_MCOMP_NAME" => "none",
+            "MAEMP_MBRAN_CODE" => "none",
+            "MAEMP_MBRAN_NAME" => "none",
             "MAEMP_ROLE" => $request->role_select2,
             "MAEMP_STATUS" => 1,
             "MAEMP_ACTIVATION_STATUS" => 0,
@@ -163,9 +163,9 @@ class AddController extends Controller
         ]);
 
         if ($insert_data["MAEMP_ROLE"] == 1) {
-            $role = "CekOri Administrator";
+            $role = "HRIS Administrator";
         } elseif ($insert_data["MAEMP_ROLE"] == 2) {
-            $role = "QR Approver";
+            $role = "Staff Admin";
         } elseif ($insert_data["MAEMP_ROLE"] == 3) {
             $role = "PIC Brand";
         } elseif ($insert_data["MAEMP_ROLE"] == 4) {
@@ -182,40 +182,11 @@ class AddController extends Controller
             $role = "Store Staff";
         }
 
-        $brand_data = std_get([
-            "table_name" => "MBRAN",
-            "where" => [
-                [
-                    "field_name" => "MBRAN_CODE",
-                    "operator" => "=",
-                    "value" => session("brand_code"),
-                ]
-            ],
-            "join" => [
-                [
-                    "table_name" => "MCOMP",
-                    "join_type" => "INNER",
-                    "on1" => "MCOMP_CODE",
-                    "operator" => "=",
-                    "on2" => "MBRAN_MCOMP_CODE"
-                ]
-            ],
-            "first_row" => true
-        ]);
-
-        if ($brand_data == null) {
-            $brand_image = null;
-            $company_name = null;
-            $brand_name = null;
-        }
-        else {
-            $brand_image = $brand_data["MBRAN_IMAGE"];
-            $company_name = $brand_data["MCOMP_TYPE"]." ".$brand_data["MBRAN_MCOMP_NAME"];
-            $brand_name = $brand_data["MBRAN_NAME"];
-        }
+       
+      
 
         if ($insert_data["MAEMP_ROLE"] == 1 || $insert_data["MAEMP_ROLE"] == 3) {
-            $created_by = "admin@cekori.com";
+            $created_by = "hris_admin";
         } else {
             $created_by = session("user_name");
         }
@@ -230,11 +201,11 @@ class AddController extends Controller
         $data =[
             "name" => $request->employee_name,
             "parameter" => $parameter,
-            "company" => $company_name,
-            "brand" => $brand_name,
+            "company" => "Axeside Company",
+            "brand" => "HRIS",
             "created_by" => $created_by,
             "user_role" => $role,
-            "brand_logo" => $brand_image,
+            "brand_logo" =>null,
             "user_account" => strtolower(str_replace(" ","_",$request->employee_username)),
         ];
 
@@ -242,26 +213,26 @@ class AddController extends Controller
             Mail::send("mail.account_verification", ['data' => $data], function ($message) use ($to_name, $to_email) {
                 $message
                     ->to($to_email, $to_name)
-                    ->subject("Activation account email confirmation for CekOri User ".$to_name);
-                $message->from("admin@cekori.com", "Activation account for CekOri User ".$to_name);
+                    ->subject("Activation account email confirmation for HRIS Employee ".$to_name);
+                $message->from("hris@axeside.com", "Activation account for HRIS Employee ".$to_name);
             });
 
-            $insert_lgema_data = [
-                "LGEMA_EMP_CODE" => strtoupper($code["data"]),
-                "LGEMA_EMP_NAME" => $request->employee_name,
-                "LGEMA_EMP_EMAIL" => $request->employee_email,
-                "LGEMA_COMP_CODE" => session("company_code"),
-                "LGEMA_COMP_NAME" => session("company_name"),
-                "LGEMA_BRAN_CODE" => session("brand_code"),
-                "LGEMA_BRAN_NAME" => session("brand_name"),
-                "LGEMA_CREATED_BY" =>  session("user_code"),
-                "LGEMA_CREATED_TEXT" => session("user_name"),
-                "LGEMA_CREATED_TIMESTAMP" => date("Y-m-d H:i:s"),
-            ];
-            $insert_lgema = std_insert([
-                "table_name" => "LGEMA",
-                "data" => $insert_lgema_data
-            ]);
+            // $insert_lgema_data = [
+            //     "LGEMA_EMP_CODE" => strtoupper($code["data"]),
+            //     "LGEMA_EMP_NAME" => $request->employee_name,
+            //     "LGEMA_EMP_EMAIL" => $request->employee_email,
+            //     "LGEMA_COMP_CODE" => session("company_code"),
+            //     "LGEMA_COMP_NAME" => session("company_name"),
+            //     "LGEMA_BRAN_CODE" => session("brand_code"),
+            //     "LGEMA_BRAN_NAME" => session("brand_name"),
+            //     "LGEMA_CREATED_BY" =>  session("user_code"),
+            //     "LGEMA_CREATED_TEXT" => session("user_name"),
+            //     "LGEMA_CREATED_TIMESTAMP" => date("Y-m-d H:i:s"),
+            // ];
+            // $insert_lgema = std_insert([
+            //     "table_name" => "LGEMA",
+            //     "data" => $insert_lgema_data
+            // ]);
             Log::critical("Success on send email employee");
         } catch (\Exception $e) {
             Log::critical("Email Employee : ".json_encode($e->getMessage()));

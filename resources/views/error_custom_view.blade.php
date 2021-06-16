@@ -23,7 +23,7 @@
 	</head>
 	<body id="kt_body" class="header-fixed header-mobile-fixed header-bottom-enabled subheader-enabled page-loading">
 		<div class="d-flex flex-column flex-root">
-			<div class="error error-6 d-flex flex-row-fluid bgi-size-cover bgi-position-center" style="background-color: #63e2ff;">
+			<div class="error error-6 d-flex flex-row-fluid bgi-size-cover bgi-position-center" style="background-color: #4a1c40;">
 				<div class="d-flex flex-column flex-row-fluid text-center">
                     <img src="{{ asset('app-logo.png') }}" class="center max-w-200px" alt="" />
 					<h1 class="error-title font-weight-boldest text-white mb-12" style="margin-top: 6rem;">Oops</h1>

@@ -730,7 +730,7 @@
 																									<div style="text-align:center;padding-bottom:10px;padding-left: 10%;padding-right:10%">
 																										<figcaption style="font-size:6px;color:#05747e">{{ $data_brand }}</figcaption>
 																										<div style="margin: 1px;width:100px;height:100px;">
-																											<img src="{!!$message->embedData(QrCode::format('png')->color(5, 117, 127)->generate($data['qr_zeta']), 'QrCode.png', 'image/png')!!}" alt="CekOri Logo" title="CekOri Logo" style="width:100px;height:100px;background-color: #63e2ff;">
+																											<img src="{!!$message->embedData(QrCode::format('png')->color(5, 117, 127)->generate($data['qr_zeta']), 'QrCode.png', 'image/png')!!}" alt="CekOri Logo" title="CekOri Logo" style="width:100px;height:100px;background-color: #4a1c40;">
 																										</div>
 																										<figcaption style="font-size:6px;color:#05747e;margin-top:-4px">ZETA</figcaption>
 																									</div>

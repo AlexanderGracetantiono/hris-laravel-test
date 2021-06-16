@@ -18,7 +18,7 @@ $(document).ready(function () {
             success: function (data) {
                 Swal.fire({
                     title: 'Success!',
-                    text: "Please check your e-mail for verification code.",
+                    text: "Login Success",
                     icon: 'success',
                     confirmButtonColor: '#D94148',
                 })

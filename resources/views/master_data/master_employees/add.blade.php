@@ -16,12 +16,12 @@
     <div class="col-lg-12">
         <div class="card card-custom gutter-b">
             <div class="card-header">
-                <h3 class="card-title">Add User Form</h3>
+                <h3 class="card-title">Add Employee Form</h3>
             </div>
             <form class="form" id="form" method="POST" action="{{ route("master_data_employee_save") }}" data-form-success-redirect="{{ route("master_data_employee_view") }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
-                    <h4>1. User Data</h4><br>
+                    <h4>1. Employee Data</h4><br>
                     <div class="form-group row">
                         <div class="col-md-6">
                             <label>User Name:</label>
@@ -32,36 +32,8 @@
                             <select class="form-control select2" id="role_select2" name="role_select2">
                                 <option></option>
                                 <?php if (session('user_role') == 1) { ?>
-                                    <option value="1">CekOri Administrator</option>
-                                <?php } ?>
-                                <?php if (session('brand_type') == 1) { ?>
-                                    <?php if (session('user_role') == 3) { ?>
-                                        <option value="4">Production Administrator</option>
-                                        <option value="5">Packaging Administrator</option>
-                                        <option value="8">Store Inventory Administrator</option>
-                                    <?php } ?>
-                                    <?php if (session('user_role') == 4) { ?>
-                                        <option value="6">Production Staff</option>
-                                    <?php } ?>
-                                    <?php if (session('user_role') == 5) { ?>
-                                        <option value="7">Packaging Staff</option>
-                                    <?php } ?>
-                                    <?php if (session('user_role') == 8) { ?>
-                                        <option value="9">Store Staff</option>
-                                    <?php } ?>
-                                <?php } ?>
-                                <?php if (session('brand_type') == 2) { ?>
-                                    <?php if (session('user_role') == 3) { ?>
-                                        <option value="4">Testing Lab Doctor</option>
-                                        <option value="5">Laboratorium Doctor</option>
-                                        <option value="8">Result Doctor</option>
-                                    <?php } ?>
-                                    <?php if (session('user_role') == 4) { ?>
-                                        <option value="6">Testing Lab Staff</option>
-                                    <?php } ?>
-                                    <?php if (session('user_role') == 5) { ?>
-                                        <option value="7">Laboratorium Staff</option>
-                                    <?php } ?>
+                                    <option  value="1">HRIS Administrator</option>
+                                    <option  value="2">Staff Admin</option>
                                 <?php } ?>
                             </select>
                         </div>

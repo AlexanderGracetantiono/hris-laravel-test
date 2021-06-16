@@ -17,11 +17,11 @@
 <div class="card card-custom">
     <div class="card-header py-3">
         <div class="card-title">
-            <h3 class="card-label">Master Data User</h3>
+            <h3 class="card-label">Master Data Employee</h3>
         </div>
         <div class="card-toolbar">
             <a href="{{ route("master_data_employee_add") }}" class="btn btn-primary font-weight-bolder">
-                <i class="fas fa-plus-circle"></i>Add User
+                <i class="fas fa-plus-circle"></i>Add Employee
             </a>
         </div>
     </div>
@@ -86,7 +86,7 @@
                     <td nowrap="nowrap">
                         <a href="{{ route("master_data_employee_edit", ["maemp_id" => $employee["MAEMP_ID"]]) }}" class="btn btn-sm btn-clean btn-icon"   title="Edit Employee"> <i class="la la-edit"></i>
                         </a>
-                        @if($employee["MAEMP_ID"] != '1' && $employee["MAEMP_ID"] != '2' && $employee["MAEMP_ID"] != '3')
+                        @if($employee["MAEMP_ID"] != '1')
                             <button type="button" data-code="{{ $employee['MAEMP_ID'] }}" data-action="{{ route('master_data_employee_delete') }}" class="btn btn-sm btn-clean btn-icon delete_btn"   title="Delete Employee"> <i class="la la-trash"></i>
                             </button>
                         @endif

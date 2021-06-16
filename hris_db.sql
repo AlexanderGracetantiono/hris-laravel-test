@@ -1,0 +1,115 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 16, 2021 at 12:04 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `hris_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `MACOP`
+--
+
+CREATE TABLE `MACOP` (
+  `MACOP_ID` int(11) NOT NULL,
+  `MACOP_CODE` varchar(255) DEFAULT NULL,
+  `MACOP_NAME` varchar(255) DEFAULT NULL,
+  `MACOP_CREATED_BY` varchar(255) DEFAULT NULL,
+  `MACOP_CREATED_TEXT` varchar(255) DEFAULT NULL,
+  `MACOP_CREATED_TIMESTAMP` timestamp NOT NULL DEFAULT current_timestamp(),
+  `MACOP_UPDATED_BY` varchar(255) DEFAULT NULL,
+  `MACOP_UPDATED_TEXT` varchar(255) DEFAULT NULL,
+  `MACOP_UPDATED_TIMESTAMP` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `MACOP`
+--
+
+INSERT INTO `MACOP` (`MACOP_ID`, `MACOP_CODE`, `MACOP_NAME`, `MACOP_CREATED_BY`, `MACOP_CREATED_TEXT`, `MACOP_CREATED_TIMESTAMP`, `MACOP_UPDATED_BY`, `MACOP_UPDATED_TEXT`, `MACOP_UPDATED_TIMESTAMP`) VALUES
+(1, '+62', 'Indonesia', NULL, NULL, '2021-02-15 07:43:46', NULL, NULL, '2021-02-15 07:44:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `MAEMP`
+--
+
+CREATE TABLE `MAEMP` (
+  `MAEMP_ID` int(10) NOT NULL,
+  `MAEMP_CODE` varchar(255) DEFAULT NULL,
+  `MAEMP_TEXT` varchar(255) DEFAULT NULL,
+  `MAEMP_USER_NAME` varchar(255) DEFAULT NULL,
+  `MAEMP_EMAIL` varchar(255) DEFAULT NULL,
+  `MAEMP_MACOP_CODE` varchar(255) DEFAULT NULL,
+  `MAEMP_PHONE_NUMBER` varchar(255) DEFAULT NULL,
+  `MAEMP_PASSWORD` varchar(255) DEFAULT NULL,
+  `MAEMP_MCOMP_CODE` varchar(255) DEFAULT NULL,
+  `MAEMP_MCOMP_NAME` varchar(255) DEFAULT NULL,
+  `MAEMP_MBRAN_CODE` varchar(255) DEFAULT NULL,
+  `MAEMP_MBRAN_NAME` varchar(255) DEFAULT NULL,
+  `MAEMP_ROLE` varchar(255) DEFAULT NULL,
+  `MAEMP_STATUS` tinyint(2) DEFAULT NULL,
+  `MAEMP_ACTIVATION_STATUS` tinyint(2) DEFAULT 0,
+  `MAEMP_BLOCKED_STATUS` tinyint(2) DEFAULT NULL,
+  `MAEMP_IS_DELETED` tinyint(2) DEFAULT 0,
+  `MAEMP_TOKEN` varchar(255) DEFAULT NULL,
+  `MAEMP_CREATED_BY` varchar(255) DEFAULT NULL,
+  `MAEMP_CREATED_TEXT` varchar(255) DEFAULT NULL,
+  `MAEMP_CREATED_TIMESTAMP` timestamp NOT NULL DEFAULT current_timestamp(),
+  `MAEMP_UPDATED_BY` varchar(255) DEFAULT NULL,
+  `MAEMP_UPDATED_TEXT` varchar(255) DEFAULT NULL,
+  `MAEMP_UPDATED_TIMESTAMP` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `MAEMP`
+--
+
+INSERT INTO `MAEMP` (`MAEMP_ID`, `MAEMP_CODE`, `MAEMP_TEXT`, `MAEMP_USER_NAME`, `MAEMP_EMAIL`, `MAEMP_MACOP_CODE`, `MAEMP_PHONE_NUMBER`, `MAEMP_PASSWORD`, `MAEMP_MCOMP_CODE`, `MAEMP_MCOMP_NAME`, `MAEMP_MBRAN_CODE`, `MAEMP_MBRAN_NAME`, `MAEMP_ROLE`, `MAEMP_STATUS`, `MAEMP_ACTIVATION_STATUS`, `MAEMP_BLOCKED_STATUS`, `MAEMP_IS_DELETED`, `MAEMP_TOKEN`, `MAEMP_CREATED_BY`, `MAEMP_CREATED_TEXT`, `MAEMP_CREATED_TIMESTAMP`, `MAEMP_UPDATED_BY`, `MAEMP_UPDATED_TEXT`, `MAEMP_UPDATED_TIMESTAMP`) VALUES
+(1, 'ORI00100001', 'Admin', 'admin', 'alexander.remains.1247@gmail.com', '+62', '98271726', '$2y$10$rQXkAN7vRDY7TNvtK.dwm.ttYZ5VsRxUTIWBJP79HlBWZvceRPApa', 'ORI0001', 'Axeside', 'ORI000100001', 'Axeside', '1', 1, 1, NULL, 0, NULL, NULL, NULL, '2021-02-15 07:37:14', NULL, NULL, '2021-06-10 15:39:26'),
+(2, 'MXX000100001', 'Alexander', 'alexander', 'axeside.docs@gmail.com', '+62', '98271725', '$2y$10$rQXkAN7vRDY7TNvtK.dwm.ttYZ5VsRxUTIWBJP79HlBWZvceRPApa', 'MXX0001', 'Maelsov', 'MXX000100001', 'Staff Kwik Kian Gie', '2', 1, 1, NULL, 0, NULL, 'staff', 'Alexander', '2021-02-15 14:54:21', NULL, NULL, '2021-06-10 16:02:03'),
+(3, 'MXX000100002', 'Josepth', 'test_edit_name', 'a@gmail.com', '+62', '98271722', '$2y$10$rQXkAN7vRDY7TNvtK.dwm.ttYZ5VsRxUTIWBJP79HlBWZvceRPApa', 'MXX0001', 'Maelsov', 'MXX000100002', 'Staff Kwik Kian Gie', '2', 1, 1, NULL, 0, NULL, 'staff', 'Josepth', '2021-02-15 14:56:32', '1', 'admin', '2021-06-10 16:19:32'),
+(4, '00001', 'Test_Addd', 'test_add', 'axeside.word@gmail.com', '+62', '98288223', NULL, NULL, NULL, NULL, NULL, '1', 1, 0, NULL, 1, NULL, '1', 'admin', '2021-06-10 16:19:59', NULL, NULL, '2021-06-10 16:33:09');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `MAEMP`
+--
+ALTER TABLE `MAEMP`
+  ADD PRIMARY KEY (`MAEMP_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `MAEMP`
+--
+ALTER TABLE `MAEMP`
+  MODIFY `MAEMP_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

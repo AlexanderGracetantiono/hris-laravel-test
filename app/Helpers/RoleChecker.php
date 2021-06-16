@@ -7,11 +7,11 @@ function check_is_role_allowed($roles)
             session("user_id") != NULL && 
             session("user_code") != null &&
             session("user_name") != NULL && 
-            session("user_role") != NULL && 
-            session("company_code") != null &&
-            session("company_name") != null &&
-            session("brand_code") != null &&
-            session("brand_name") != null
+            session("user_role") != NULL
+            // session("company_code") != null &&
+            // session("company_name") != null &&
+            // session("brand_code") != null &&
+            // session("brand_name") != null
         ) {
         if ($roles != NULL) {
             $user = get_master_employee("*",[
@@ -22,7 +22,11 @@ function check_is_role_allowed($roles)
                 ]
             ],true);
 
-            if ($user["MAEMP_IS_DELETED"] == 1 || $user["MAEMP_BLOCKED_STATUS"] == 1 || $user["MAEMP_STATUS"] != 1 || $user["MAEMP_ACTIVATION_STATUS"] != 1) {
+            if (
+                $user["MAEMP_IS_DELETED"] == 1 
+                || $user["MAEMP_BLOCKED_STATUS"] == 1 
+                || $user["MAEMP_STATUS"] != 1 
+                || $user["MAEMP_ACTIVATION_STATUS"] != 1) {
                 session()->flush();
                 redirect("/");
             }

@@ -17,18 +17,14 @@
     <div class="col-lg-12">
         <div class="card card-custom gutter-b">
             <div class="card-header">
-                <h3 class="card-title">User Edit Form</h3>
+                <h3 class="card-title">Employee Edit Form</h3>
             </div>
             <form class="form" id="form" method="POST" action="{{ route("master_data_employee_update") }}" data-form-success-redirect="{{ route("master_data_employee_view") }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="employee_id" value="{{ $employee_data["MAEMP_ID"] }}">
                 <div class="card-body">
-                    <h4>1. User Data</h4><br>
+                    <h4>1. Employee Data</h4><br>
                     <div class="form-group row">
-                        <div class="col-md-6">
-                            <label>Brand Name:</label>
-                            <input disabled type="text" class="form-control" value="<?php echo session("brand_name"); ?>">
-                        </div>
                         <div class="col-md-6">
                             <label>User Name:</label>
                             <input disabled type="text" maxlength="255" class="form-control" value="<?php echo $employee_data["MAEMP_TEXT"]; ?>" placeholder="Input user name">
@@ -36,13 +32,13 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <label>Role:</label>
+                            <label>Role: </label>
                             <select class="form-control select2" id="role_select2" name="role_select2">
                                 <option></option>
-                                <?php if (session('user_role') == 1) { ?>
-                                    <option <?php if ($employee_data["MAEMP_ROLE"] == 1) { echo("selected"); } ?> value="1">CekOri Administrator</option>
+                                <?php if (session('user_role') == "1") { ?>
+                                    <option <?php if ($employee_data["MAEMP_ROLE"] == 1) { echo("selected"); } ?> value="1">HRIS Administrator</option>
+                                    <option <?php if ($employee_data["MAEMP_ROLE"] == "2") { echo("selected"); } ?> value="2">Staff Admin</option>
                                 <?php } ?>
-                                <?php if (session('brand_type') == 1) { ?>
                                     <?php if (session('user_role') == 3) { ?>
                                         <option <?php if ($employee_data["MAEMP_ROLE"] == 4) { echo("selected"); } ?>  value="4">Production Administrator</option>
                                         <option <?php if ($employee_data["MAEMP_ROLE"] == 5) { echo("selected"); } ?>  value="5">Packaging Administrator</option>
@@ -57,20 +53,6 @@
                                     <?php if (session('user_role') == 8) { ?>
                                         <option <?php if ($employee_data["MAEMP_ROLE"] == 9) { echo("selected"); } ?>  value="9">Store Staff</option>
                                     <?php } ?>
-                                <?php } ?>
-                                <?php if (session('brand_type') == 2) { ?>
-                                    <?php if (session('user_role') == 3) { ?>
-                                        <option <?php if ($employee_data["MAEMP_ROLE"] == 4) { echo("selected"); } ?>  value="4">Test Lab Doctor</option>
-                                        <option <?php if ($employee_data["MAEMP_ROLE"] == 5) { echo("selected"); } ?>  value="5">Laboratorium Doctor</option>
-                                        <option <?php if ($employee_data["MAEMP_ROLE"] == 8) { echo("selected"); } ?>  value="8">Result Doctor</option>
-                                    <?php } ?>
-                                    <?php if (session('user_role') == 4) { ?>
-                                        <option <?php if ($employee_data["MAEMP_ROLE"] == 6) { echo("selected"); } ?>  value="6">Test Lab Staff</option>
-                                    <?php } ?>
-                                    <?php if (session('user_role') == 5) { ?>
-                                        <option <?php if ($employee_data["MAEMP_ROLE"] == 7) { echo("selected"); } ?>  value="7">Laboratorium Staff</option>
-                                    <?php } ?>
-                                <?php } ?>
                             </select>
                         </div>
                     </div>

@@ -53,14 +53,14 @@ class LoginController extends Controller
             "table_name" => "MAEMP",
             "where" => [
                 [
-                    "field_name" => "username",
+                    "field_name" => "MAEMP_USER_NAME",
                     "operator" => "=",
                     "value" => $request->username,
                 ],
             ],
             "order_by" => [
                 [
-                    "field" => "id",
+                    "field" => "MAEMP_ID",
                     "type" => "DESC"
                 ]
             ],
@@ -69,38 +69,37 @@ class LoginController extends Controller
 
         if ($user_data == NULL) {
             return response()->json([
-                'message' => "Incorrect Password, Username, Both, or nothing is wrong.. idk.."
+                'message' => "Incorrect Password and Username"
             ], 500);
         }
         
-        if ($user_data["is_deleted"] != 0) {
+        if ($user_data["MAEMP_IS_DELETED"] != 0) {
             return response()->json([
-                'message' => "Incorrect Password, Username, Both, or nothing is wrong.. idk.."
+                'message' => "Incorrect Password and Username"
             ], 500);
         }
 
-        if ($user_data["cosplay_id"] != "1") {
+        if (!Hash::check($request->password, $user_data["MAEMP_PASSWORD"])) {
             return response()->json([
-                'message' => "As Babu, you don't have access to this site"
+                'message' => "Incorrect Password and Username"
             ], 500);
         }
-
-        if (!Hash::check($request->password, $user_data["password"])) {
-            return response()->json([
-                'message' => "Incorrect Password, Username, Both, or nothing is wrong.. idk.."
-            ], 500);
+        $words = explode(" ", $user_data["MAEMP_TEXT"]);
+        $acronym = "";
+        foreach ($words as $w) {
+            $acronym .= $w[0];
         }
-        session(['user_initial_name' => "A"]);
-        session(['user_id' => $user_data["id"]]);
-        session(['user_name' => $user_data["username"]]);
-        session(['user_full_name' => $user_data["full_name"]]);
-        session(['user_name' => $user_data["full_name"]]);
-        session(['user_role' => $user_data["cosplay_id"]]);
-        session(['company_code' => "A"]);
-        session(['company_name'=> "A"]);
-        session(['brand_code' => "A"]);
-        session(['brand_name' => "A"]);
-        session(['brand_type' => "A"]);
+        session(['user_initial_name' => strtoupper($acronym)]);
+        session(['user_id' => $user_data["MAEMP_ID"]]);
+        session(['user_code' => $user_data["MAEMP_CODE"]]);
+        session(['user_name' => $user_data["MAEMP_USER_NAME"]]);
+        session(['user_full_name' => $user_data["MAEMP_TEXT"]]);
+        session(['user_role' => $user_data["MAEMP_ROLE"]]);
+        // session(['company_code' => "A"]);
+        // session(['company_name'=> "A"]);
+        // session(['brand_code' => "A"]);
+        // session(['brand_name' => "A"]);
+        // session(['brand_type' => "A"]);
 
         return response()->json([
             'message' => "OK"

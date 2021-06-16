@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Axeside Desktop | Login Page</title>
+	<title>HRIS Desktop | Login Page</title>
 	<meta name="description" content="Login page example" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -17,16 +17,16 @@
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
 	<div class="d-flex flex-column flex-root">
 		<div class="login login-1 login-7 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
-			<div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #F2C98A;">
+			<div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #f6e5e9;">
 				<div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
 					<a href="#" class="text-center mb-10">
-						<img src="{{ asset('app-logo.png') }}" class="max-h-90px" alt="" />
+						<img src="{{ asset('app-logo.png') }}"  class="max-h-90px" alt="" />
 					</a>
-					<h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg" style="color: #986923;">Axeside
+					<h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg" style="color: #4a1c40;">HRIS
 						<br>Backend Portal</h3>
 				</div>
 				<div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" 
-				style="background-image: url(assets/media/svg/illustrations/login-visual-1.svg)">
+				style="background-image: url(assets/media/svg/illustrations/login-visual-4.svg)">
 			</div>
 			</div>
 

@@ -666,7 +666,7 @@
 																									<div style="text-align:center;padding-left:10px;padding-top: 1px;">
 																										<figcaption style="font-size:6px;color:#05747e">Brand Manufacturer</figcaption>
 																										<div style="margin: 1px 0px;width:100px;height:100px;">
-																											<img src="{!! $message->embedData(QrCode::format('png')->color(5, 117, 127)->generate('ZETA'), 'QrCode.png', 'image/png')!!}" alt="CekOri Logo" title="CekOri Logo" style="width:100px;height:100px;background-color: #63e2ff;" >
+																											<img src="{!! $message->embedData(QrCode::format('png')->color(5, 117, 127)->generate('ZETA'), 'QrCode.png', 'image/png')!!}" alt="CekOri Logo" title="CekOri Logo" style="width:100px;height:100px;background-color: #4a1c40;" >
 																										</div>
 																										<figcaption style="font-size:6px;color:#05747e;margin-top:-4px">ZETA</figcaption>
 																									</div>
@@ -696,7 +696,7 @@
 																									<div style="text-align:center;padding-left:10px;padding-top: 1px;">
 																										<figcaption style="font-size:6px;color:#910004">Brand Manufacturer</figcaption>
 																										<div style="margin: 1px 0px;width:100px;height:100px;">
-																											<img src="{!! $message->embedData(QrCode::format('png')->color(145, 0, 4)->generate('ALPHA'), 'QrCode.png', 'image/png')!!}" alt="CekOri Logo" title="CekOri Logo" style="width:100px;height:100px;background-color: #63e2ff;" >
+																											<img src="{!! $message->embedData(QrCode::format('png')->color(145, 0, 4)->generate('ALPHA'), 'QrCode.png', 'image/png')!!}" alt="CekOri Logo" title="CekOri Logo" style="width:100px;height:100px;background-color: #4a1c40;" >
 																										</div>
 																										<figcaption style="font-size:6px;color:#910004;margin-top:-4px">ALPHA</figcaption>
 																									</div>

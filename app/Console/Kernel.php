@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Checking_FIORD::class,
+        // Commands\Checking_FIORD::class,
     ];
     /**
      * Define the application's command schedule.
@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('command:checking_fiord')->dailyAt('00:00');
-        $schedule->command('command:checking_fiord')->everyMinute();
-        $schedule->command('generate_qr')->everyMinute();
+        // $schedule->command('command:checking_fiord')->everyMinute();
+        // $schedule->command('generate_qr')->everyMinute();
     }
 
     /**
@@ -38,8 +38,8 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        // $this->load(__DIR__.'/Commands');
 
-        require base_path('routes/console.php');
+        // require base_path('routes/console.php');
     }
 }

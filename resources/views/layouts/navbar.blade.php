@@ -10,10 +10,6 @@
                         <a href="{{ route('home') }}"
                             class="nav-link py-4 px-6 {{ request()->is('home') ? 'active' : '' }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard_chat') }}"
-                            class="nav-link py-4 px-6 {{ request()->is('master_data/chat_api/*') ? 'active' : '' }} {{ request()->is('master_data/chat_api/*') ? 'active' : '' }}">Chat-API</a>
-                    </li>
                     {{-- <?php if (session('user_role') == '1' || session('user_role') == '3' || session('user_role') == '4' || session('user_role') == '5' || session('user_role') == '8') { ?>
                         @if (session('brand_type') == 1 || session('brand_type') == 0)
                             <li class="nav-item mr-3">
@@ -82,13 +78,13 @@
                             <a href="{{ route('order_qr_view') }}" class="nav-link py-4 px-6 {{ request()->is('transaction/*') ? 'active' : '' }}">QR Code</a>
                         </li>
                     <?php } ?> --}}
-                    {{-- <?php if (session('user_role') != '2') { ?>
+                    <?php if (session('user_role') != '2') { ?>
                         <li class="nav-item mr-3">
                             <a href="{{ route('master_data_employee_view') }}" class="nav-link py-4 px-6 {{ request()->is('master_data/master_employees/*') ? 'active' : '' }}">
-                                    Users
+                                    Employees
                             </a>
                         </li>
-                    <?php } ?> --}}
+                    <?php } ?>
                     {{-- <?php if (session('user_role') == '1') { ?>
                         <li class="nav-item mr-3">
                             <a href="{{ route('outdated_application_version_view') }}" class="nav-link py-4 px-6 {{ request()->is('application/*') ? 'active' : '' }}">Version</a>
@@ -110,11 +106,9 @@
                                 class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">{{ session('user_full_name') }}</span>
                             <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
                                 @if (session('user_role') == 1)
-                                    CekOri Administrator
-                                @endif
-                                @if (session('brand_type') == 1)
-                                    @if (session('user_role') == 2)
-                                        QR Approver
+                                    HRIS Administrator
+                                    @elseif (session('user_role') == 2)
+                                        Staff Admin
                                     @elseif (session('user_role') == 3)
                                         PIC Brand
                                     @elseif (session('user_role') == 4)
@@ -124,19 +118,6 @@
                                     @elseif (session('user_role') == 8)
                                         Store Inventory Administrator
                                     @endif
-                                @elseif(session('brand_type') == 2)
-                                    @if (session('user_role') == 2)
-                                        QR Approver
-                                    @elseif (session('user_role') == 3)
-                                        Lab PIC Brand
-                                    @elseif (session('user_role') == 4)
-                                        Lab Testing Doctor
-                                    @elseif (session('user_role') == 5)
-                                        Laboratorium Doctor
-                                    @elseif (session('user_role') == 8)
-                                        Result Doctor
-                                    @endif
-                                @endif
                             </span>
                         </div>
                         <span class="symbol symbol-35">
@@ -151,7 +132,7 @@
     <div class="header-bottom">
         <div class="container">
             <div class="header-navs header-navs-left" id="kt_header_navs">
-                <ul class="header-tabs p-5 p-lg-0 d-flex d-lg-none nav nav-bold nav-tabs" role="tablist">
+                {{-- <ul class="header-tabs p-5 p-lg-0 d-flex d-lg-none nav nav-bold nav-tabs" role="tablist">
                     <li class="nav-item mr-2">
                         <a href="{{ route('home') }}"
                             class="nav-link py-4 px-6 {{ request()->is('home') ? 'active' : '' }}" data-toggle="tab"
@@ -256,9 +237,9 @@
                             data-toggle="tab" data-target="#kt_header_tab_7" role="tab">Report</a>
                     </li>
                     <?php } ?>
-                </ul>
+                </ul> --}}
                 <div class="tab-content">
-                    <div class="tab-pane py-5 p-lg-0 justify-content-between {{ request()->is('home') ? 'show active' : '' }}"
+                    {{-- <div class="tab-pane py-5 p-lg-0 justify-content-between {{ request()->is('home') ? 'show active' : '' }}"
                         id="kt_header_tab_1">
                         <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             <ul class="menu-nav">
@@ -270,9 +251,9 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="tab-pane py-5 p-lg-0 justify-content-between {{ request()->is('dashboard') ? 'show active' : '' }} {{ request()->is('dashboard/*') ? 'show active' : '' }} {{ request()->is('dashboard_admin') ? 'show active' : '' }}"
+                    {{-- <div class="tab-pane py-5 p-lg-0 justify-content-between {{ request()->is('dashboard') ? 'show active' : '' }} {{ request()->is('dashboard/*') ? 'show active' : '' }} {{ request()->is('dashboard_admin') ? 'show active' : '' }}"
                         id="kt_header_tab_7">
                         <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             <ul class="menu-nav">
@@ -290,9 +271,9 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('master_data/companies/*') ? 'show active' : '' }} {{ request()->is('manufacture/master_data/companies/*') ? 'show active' : '' }} {{ request()->is('test_lab/master_data/companies/*') ? 'show active' : '' }}"
+                    {{-- <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('master_data/companies/*') ? 'show active' : '' }} {{ request()->is('manufacture/master_data/companies/*') ? 'show active' : '' }} {{ request()->is('test_lab/master_data/companies/*') ? 'show active' : '' }}"
                         id="kt_header_tab_2">
                         <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             <ul class="menu-nav">
@@ -398,9 +379,9 @@
                                 <?php } ?>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('product/product_attribute/*') ? 'show active' : '' }} {{ request()->is('manufacture/master_data/product/*') ? 'show active' : '' }} {{ request()->is('test_lab/master_data/product/*') ? 'show active' : '' }}"
+                    {{-- <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('product/product_attribute/*') ? 'show active' : '' }} {{ request()->is('manufacture/master_data/product/*') ? 'show active' : '' }} {{ request()->is('test_lab/master_data/product/*') ? 'show active' : '' }}"
                         id="kt_header_tab_3">
                         <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             <ul class="menu-nav">
@@ -440,9 +421,9 @@
                                 <?php } ?>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('transaction/qr/*') ? 'show active' : '' }} {{ request()->is('kabar_masyarakat/*') ? 'show active' : '' }}"
+                    {{-- <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('transaction/qr/*') ? 'show active' : '' }} {{ request()->is('kabar_masyarakat/*') ? 'show active' : '' }}"
                         id="kt_header_tab_4">
                         <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             <ul class="menu-nav">
@@ -454,9 +435,9 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('application/*') ? 'show active' : '' }} {{ request()->is('kabar_masyarakat/*') ? 'show active' : '' }}"
+                    {{-- <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('application/*') ? 'show active' : '' }} {{ request()->is('kabar_masyarakat/*') ? 'show active' : '' }}"
                         id="kt_header_tab_5">
                         <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             <ul class="menu-nav">
@@ -474,7 +455,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('master_data/master_employees/*') ? 'show active' : '' }} {{ request()->is('kabar_masyarakat/*') ? 'show active' : '' }}"
                         id="kt_header_tab_6">
@@ -484,7 +465,7 @@
                                 <li class="menu-item {{ request()->is('master_data/master_employees/*') ? 'menu-item-active' : '' }}"
                                     aria-haspopup="true">
                                     <a href="{{ route('master_data_employee_view') }}" class="menu-link">
-                                        <span class="menu-text">User</span>
+                                        <span class="menu-text">Employee List</span>
                                     </a>
                                 </li>
                                 <?php } ?>
@@ -492,7 +473,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('report/*') ? 'show active' : '' }}"
+                    {{-- <div class="tab-pane p-5 p-lg-0 justify-content-between {{ request()->is('report/*') ? 'show active' : '' }}"
                         id="kt_header_tab_7">
                         <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             <ul class="menu-nav">
@@ -506,7 +487,7 @@
                                 <?php } ?>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

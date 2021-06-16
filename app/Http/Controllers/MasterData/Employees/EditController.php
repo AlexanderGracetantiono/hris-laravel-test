@@ -33,6 +33,7 @@ class EditController extends Controller
             ],
             "first_row" => true,
         ]);
+        // dd($employee_data);
         $code = std_get([
             "table_name" => "MACOP",
             "select" => "*",
